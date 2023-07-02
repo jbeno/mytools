@@ -1,5 +1,5 @@
-fu# mytools
-Some helpful python functions for data science
+# mytools
+Some helpful python functions for data science. I'm not a software engineer, be kind!
 
 ## get_unique
 Gets all the unique values of variables in a dataframe. For each variable, if the number of unique values is equal to or below "n", it will treat them as categorical and output the unique values (optionally with counts, percentages). For variables with unique values above "n", it will consider them continuous numerical. If "cont" is True, you will see a statistical summary of these. If "plot" is True, charts will be drawn for all of the variables (categorical will get bar charts, continuous will get histograms).
