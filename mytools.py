@@ -176,7 +176,7 @@ def plot_corr(df, column, meth='pearson', size=(15, 8), rot=45, pal='RdYlGn', rn
     - df: dataframe that contains the variables you want to analyze
     - column: string. Column name that you want to evaluate the correlations against
     - meth: optional (default='pearson'). See df.corr() method options
-    - size: tuple of ints, optional (default=(10, 6)). The size of the plot
+    - size: tuple of ints, optional (default=(15, 8)). The size of the plot
     - rot: int, optional (default=45). The rotation of the x-axis labels
     - pal: string, optional (default='RdYlGn'). The color map to use
     - rnd: int, optional (default=2). Number of decimel places to round to
