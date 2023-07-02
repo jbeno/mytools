@@ -122,7 +122,7 @@ def plot_charts(df, n=10, ncols=3, figsize=(20, 40), rotation=45):
     - df: dataframe that contains the variables you want to analyze
     - n: int (default=20). Threshold of unique values for categorical (equal or below) vs. continuous (above)
     - ncols: int, optional (default=3). The number of columns in the subplot grid.
-    - figsize: tuple of ints, optional (default=(20, 20)). The size of the entire plot figure.
+    - figsize: tuple of ints, optional (default=(20, 40)). The size of the entire plot figure.
     - rotation: int, optional (default=45). The rotation of the x-axis labels.
 
     Returns: None
