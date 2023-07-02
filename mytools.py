@@ -195,6 +195,7 @@ def plot_corr(df, column, meth='pearson', size=(15, 8), rot=45, pal='RdYlGn', rn
 
     # Plot the chart
     plt.figure(figsize=size)
+    plt.axhline(y = 0, color = 'lightgrey', alpha=0.8, linestyle = '-')
     bars = plt.bar(corr.index, corr.values, color=colors)
 
     # Add value labels to the end of each bar
