@@ -23,6 +23,7 @@ def get_unique(df, n=20, sort='none', list=True, strip=False, count=False, perce
     
     Returns: None
 ```
+<img src="/images/get_unique_1.png" width="300" valign="top"> <img src="/images/get_unique_2.png" width="300" valign="top"> <img src="/images/get_unique_3.png" width="300" valign="top">
 
 ## plot_charts
 Gets all the variables in a dataframe and outputs a grid of charts. For each variable, if the number of unique values is equal to or below "n", it will treat them as categorical and plot a bar chart. For variables with unique values above "n", it will consider them continuous and plot a histograms.
@@ -41,6 +42,8 @@ def plot_charts(df, n=10, ncols=3, figsize=(20, 40), rotation=45):
 
     Returns: None
 ```
+
+<img src="/images/plot_charts.png" width="400">
 
 ## split_dataframe
 Take a dataframe as input, along with "n", and splits all variables below "n" into a categorical dataframe (df_cat), and the others in a continuous numerical dataframe (df_num).
