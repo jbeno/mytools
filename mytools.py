@@ -166,6 +166,52 @@ def plot_charts(df, n=10, ncols=3, figsize=(20, 40), rotation=45):
     plt.tight_layout()
     plt.show()
 
+def plot_corr(df, column, meth='pearson', size=(15, 8), rot=45, pal='RdYlGn', rnd=2):
+    """
+    Create a barplot that shows correlation values for one variable against others.
+    Essentially one slice of a heatmap, but the bars show the height of the correlation
+    in addition to the color. It will only look at numeric variables.
+
+    Parameters:
+    - df: dataframe that contains the variables you want to analyze
+    - column: string. Column name that you want to evaluate the correlations against
+    - meth: optional (default='pearson'). See df.corr() method options
+    - size: tuple of ints, optional (default=(10, 6)). The size of the plot
+    - rot: int, optional (default=45). The rotation of the x-axis labels
+    - pal: string, optional (default='RdYlGn'). The color map to use
+    - rnd: int, optional (default=2). Number of decimel places to round to
+
+    Returns: None
+    """
+    # Calculate correlations
+    corr = round(df.corr(method=meth, numeric_only=True)[column].sort_values(), rnd)
+
+    # Drop column from correlations (correlating with itself)
+    corr = corr.drop(column)
+
+    # Generate colors based on correlation values using a colormap
+    cmap = plt.get_cmap(pal)
+    colors = cmap((corr.values + 1) / 2)
+
+    # Plot the chart
+    plt.figure(figsize=size)
+    bars = plt.bar(corr.index, corr.values, color=colors)
+
+    # Add value labels to the end of each bar
+    for bar in bars:
+        yval = bar.get_height()
+        if yval < 0:
+            plt.text(bar.get_x() + bar.get_width()/3.0, yval - 0.05, yval, va='top') 
+        else:
+            plt.text(bar.get_x() + bar.get_width()/3.0, yval + 0.05, yval, va='bottom')
+
+    plt.title('Correlation with ' + column, fontsize=20)
+    plt.ylabel('Correlation', fontsize=14)
+    plt.xlabel('Other Variables', fontsize=14)
+    plt.xticks(rotation=rot)
+    plt.ylim(-1, 1)
+    plt.show()
+
 def split_dataframe(df, n):
     """
     Split a DataFrame into two based on the number of unique values in each column.
