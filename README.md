@@ -45,6 +45,29 @@ def plot_charts(df, n=10, ncols=3, figsize=(20, 40), rotation=45):
 
 <img src="/images/plot_charts.png" width="400">
 
+## plot_corr
+Takes a dataframe and column as input, and then calculates the correlations (numeric only) against that column, and plots the results in a bar chart. This is kind of like a "slice" of a heatmap plot, but you get the benefit of the bar height showing the extent of the correlation (in addition to the heatmap color). Positive and negative are more easily discerned because they're either above or below the 0 line on the Y axis.
+```
+def plot_corr(df, column, meth='pearson', size=(15, 8), rot=45, pal='RdYlGn', rnd=2):
+    """
+    Create a barplot that shows correlation values for one variable against others.
+    Essentially one slice of a heatmap, but the bars show the height of the correlation
+    in addition to the color. It will only look at numeric variables.
+
+    Parameters:
+    - df: dataframe that contains the variables you want to analyze
+    - column: string. Column name that you want to evaluate the correlations against
+    - meth: optional (default='pearson'). See df.corr() method options
+    - size: tuple of ints, optional (default=(10, 6)). The size of the plot
+    - rot: int, optional (default=45). The rotation of the x-axis labels
+    - pal: string, optional (default='RdYlGn'). The color map to use
+    - rnd: int, optional (default=2). Number of decimel places to round to
+
+    Returns: None
+```
+
+<img src="/images/plot_corr.png" width="400">
+
 ## split_dataframe
 Take a dataframe as input, along with "n", and splits all variables below "n" into a categorical dataframe (df_cat), and the others in a continuous numerical dataframe (df_num).
 This was meant to help isolate the sets of variables you'd be using for correlations vs. categorical explorations.
